@@ -1,15 +1,20 @@
+<div align="center">
+
 # 🌐 Speech Language Switcher
 
-Switch your VS Code speech language with a single click!
+<img src="earth.png" alt="Speech Language Switcher" width="128" height="128">
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![VS Code](https://img.shields.io/badge/VS%20Code-1.85.0+-blue.svg)](https://code.visualstudio.com/)
+<strong>Switch your VS Code speech language with a single click!</strong>
+
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+<a href="https://code.visualstudio.com/"><img src="https://img.shields.io/badge/VS%20Code-1.85.0+-blue.svg" alt="VS Code"></a>
 
 ---
 
 **[Overview](#-overview) • [Features](#-features) • [Usage](#-usage) • [Languages](#-supported-languages) • [Contributing](#-contributing)**
 
 ---
+</div>
 
 ## 🎯 Overview
 

@@ -3,6 +3,7 @@
   "displayName": "Speech Language Switcher",
   "description": "Quickly switch the accessibility.voice.speechLanguage setting via a status bar icon",
   "version": "0.0.2",
+  "icon": "earth.png",
   "engines": {
     "vscode": "^1.107.1"
   },
