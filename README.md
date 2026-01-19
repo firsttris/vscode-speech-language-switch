@@ -1,63 +1,146 @@
-# Speech Language Switcher
+# 🌐 Speech Language Switcher
 
-A VS Code extension that allows you to quickly switch the `accessibility.voice.speechLanguage` setting via a convenient status bar icon.
+Switch your VS Code speech language with a single click!
 
-## Features
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![VS Code](https://img.shields.io/badge/VS%20Code-1.85.0+-blue.svg)](https://code.visualstudio.com/)
 
-- **Status Bar Icon**: Quick access to language switching via a globe icon in the status bar (positioned on the right side, near the Copilot icon)
-- **Language Selection**: Choose from 30+ supported speech languages through an intuitive quick pick menu
-- **Current Language Display**: The status bar shows your current speech language
-- **Automatic Settings Update**: Changes are immediately applied to your VS Code settings
+---
 
-## Usage
+**[Overview](#-overview) • [Features](#-features) • [Usage](#-usage) • [Languages](#-supported-languages) • [Contributing](#-contributing)**
 
-1. Click the globe icon ($(globe)) in the status bar on the right side
-2. Select your desired speech language from the quick pick menu
-3. The setting is automatically updated and the status bar reflects the change
+---
 
-## Supported Languages
+## 🎯 Overview
 
-The extension supports a wide range of languages including:
-- English (US, UK, Australia, Canada, India)
-- German (Germany, Switzerland)
-- Spanish (Spain, Mexico)
-- French (France, Canada)
-- Italian, Japanese, Korean
-- Portuguese (Brazil, Portugal)
-- Chinese (Simplified, Traditional)
-- Russian, Dutch, Polish, Turkish
-- Swedish, Norwegian, Danish, Finnish
-- Czech, Hindi, Arabic, Hebrew
-- Thai, Vietnamese
+A lightweight VS Code extension that provides quick access to switch the `accessibility.voice.speechLanguage` setting. Perfect for users who work in multiple languages or need to quickly adjust their speech accessibility settings.
 
-## Development
+> ✨ **Why use this extension?** Instead of navigating through VS Code settings, simply click the status bar icon (located on the right side, near the Copilot icon) and select your language from the quick pick menu. It's that easy!
 
-### Setup
+## ✨ Features
 
-```bash
-npm install
-```
+| 🚀 Quick Access | 🌍 Language Support |
+| --- | --- |
+| 🖱️ **Status Bar Icon** - One-click access via globe icon (right side, near Copilot) | 🗣️ **30+ Languages** - Comprehensive language support for speech synthesis |
+| 📊 **Current Language Display** - Always see your active speech language | 🔄 **Instant Updates** - Changes apply immediately to your settings |
+| ⚡ **Intuitive Interface** - Simple quick pick menu for language selection | 🎯 **Smart Detection** - Automatically loads your current language setting |
 
-### Build
+### Key Highlights
 
-```bash
-npm run compile
-```
+- ✅ **Zero Configuration** - Works out-of-the-box with no setup required
+- 🎨 **Seamless Integration** - Positioned conveniently near the Copilot icon
+- 🔒 **Persistent Settings** - Your language choice is saved in VS Code settings
+- ⚡ **Lightweight** - Minimal performance impact on your editor
 
-### Watch Mode
+## 🚀 Usage
 
-```bash
-npm run watch
-```
+1. **Click** the globe icon (🌐) in the status bar (right side, positioned near the Copilot icon)
+2. **Select** your desired speech language from the quick pick menu
+3. **Done!** The setting updates automatically and the status bar reflects your choice
 
-### Testing
+![Usage Example](https://via.placeholder.com/800x400/1e1e1e/ffffff?text=Status+Bar+→+Select+Language+→+Updated!)
 
-Press `F5` to open a new VS Code window with the extension loaded.
+## 🌍 Supported Languages
 
-## Requirements
+The extension supports a comprehensive range of speech languages:
 
-VS Code 1.85.0 or higher
+<details>
+<summary>📋 Click to view all 30+ supported languages</summary>
 
-## License
+### English Variants
+- 🇺🇸 English (US) - `en-US`
+- 🇬🇧 English (UK) - `en-GB`
+- 🇦🇺 English (Australia) - `en-AU`
+- 🇨🇦 English (Canada) - `en-CA`
+- 🇮🇳 English (India) - `en-IN`
 
-MIT
+### European Languages
+- 🇩🇪 German (Germany) - `de-DE`
+- 🇨🇭 German (Switzerland) - `de-CH`
+- 🇪🇸 Spanish (Spain) - `es-ES`
+- 🇲🇽 Spanish (Mexico) - `es-MX`
+- 🇫🇷 French (France) - `fr-FR`
+- 🇨🇦 French (Canada) - `fr-CA`
+- 🇮🇹 Italian - `it-IT`
+- 🇳🇱 Dutch - `nl-NL`
+- 🇵🇹 Portuguese (Portugal) - `pt-PT`
+- 🇧🇷 Portuguese (Brazil) - `pt-BR`
+- 🇵🇱 Polish - `pl-PL`
+- 🇷🇺 Russian - `ru-RU`
+- 🇹🇷 Turkish - `tr-TR`
+
+### Nordic Languages
+- 🇸🇪 Swedish - `sv-SE`
+- 🇳🇴 Norwegian - `nb-NO`
+- 🇩🇰 Danish - `da-DK`
+- 🇫🇮 Finnish - `fi-FI`
+
+### Asian Languages
+- 🇯🇵 Japanese - `ja-JP`
+- 🇰🇷 Korean - `ko-KR`
+- 🇨🇳 Chinese (Simplified) - `zh-CN`
+- 🇹🇼 Chinese (Traditional) - `zh-TW`
+- 🇹🇭 Thai - `th-TH`
+- 🇻🇳 Vietnamese - `vi-VN`
+- 🇮🇳 Hindi - `hi-IN`
+
+### Other Languages
+- 🇨🇿 Czech - `cs-CZ`
+- 🇸🇦 Arabic - `ar-SA`
+- 🇮🇱 Hebrew - `he-IL`
+
+</details>
+
+## ⚙️ Requirements
+
+- **VS Code** 1.85.0 or higher
+
+No additional dependencies or configuration needed!
+
+## 🤝 Contributing
+
+Want to contribute? We'd love your help!
+
+### 🚀 Development Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/vscode-speech-language-switch.git
+   cd vscode-speech-language-switch
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development**
+   - Press `F5` or go to Run → Start Debugging
+   - A new VS Code window will open with the extension loaded
+
+4. **Build the extension**
+   ```bash
+   npm run compile
+   ```
+
+5. **Watch mode for development**
+   ```bash
+   npm run watch
+   ```
+
+### 📝 Found a Bug or Have a Feature Request?
+
+- 🐛 [Report a Bug](https://github.com/yourusername/vscode-speech-language-switch/issues)
+- 💡 [Request a Feature](https://github.com/yourusername/vscode-speech-language-switch/issues)
+
+---
+
+## 📄 License
+
+MIT - see the [LICENSE](LICENSE) file for details
+
+---
+
+**Made with ❤️ for the VS Code community**
+
+⭐ Star us on [GitHub](https://github.com/yourusername/vscode-speech-language-switch) if you find this extension useful!

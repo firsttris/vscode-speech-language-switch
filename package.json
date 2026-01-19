@@ -4,7 +4,7 @@
   "description": "Quickly switch the accessibility.voice.speechLanguage setting via a status bar icon",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.85.0"
+    "vscode": "^1.96.0"
   },
   "categories": [
     "Other"
@@ -26,15 +26,13 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
+    "lint": "biome check --write src",
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.85.0",
-    "@types/node": "18.x",
-    "@typescript-eslint/eslint-plugin": "^6.13.0",
-    "@typescript-eslint/parser": "^6.13.0",
-    "eslint": "^8.54.0",
-    "typescript": "^5.3.2"
+    "@types/vscode": "^1.108.1",
+    "@types/node": "25.0.9",
+    "@biomejs/biome": "^2.3.11",
+    "typescript": "^ 5.9.3"
   }
 }
