@@ -120,11 +120,6 @@ Want to contribute? We'd love your help!
    npm run compile
    ```
 
-5. **Watch mode for development**
-   ```bash
-   npm run watch
-   ```
-
 ---
 
 
