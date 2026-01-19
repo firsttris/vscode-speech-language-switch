@@ -4,6 +4,8 @@
   "description": "Quickly switch the accessibility.voice.speechLanguage setting via a status bar icon",
   "version": "0.0.3",
   "icon": "earth.png",
+  "publisher": "firsttris",
+  "author": "Tristan Teufel",
   "repository": {
     "type": "git",
     "url": "https://github.com/firsttris/vscode-speech-language-switch.git"
