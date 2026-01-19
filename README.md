@@ -38,8 +38,6 @@ A lightweight VS Code extension that provides quick access to switch the `access
 2. **Select** your desired speech language from the quick pick menu
 3. **Done!** The setting updates automatically and the status bar reflects your choice
 
-![Usage Example](https://via.placeholder.com/800x400/1e1e1e/ffffff?text=Status+Bar+→+Select+Language+→+Updated!)
-
 ## 🌍 Supported Languages
 
 The extension supports a comprehensive range of speech languages:
