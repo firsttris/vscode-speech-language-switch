@@ -2,7 +2,7 @@
   "name": "vscode-speech-language-switch",
   "displayName": "Speech Language Switcher",
   "description": "Quickly switch the accessibility.voice.speechLanguage setting via a status bar icon",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "icon": "earth.png",
   "publisher": "firsttris",
   "author": "Tristan Teufel",
@@ -53,7 +53,7 @@
     "watch": "tsc -watch -p ./",
     "build": "npm run compile",
     "package": "vsce package",
-    "publish": "vsce publish $VERSION -m 'chore: bump version to %s [skip ci]' && ovsx publish && git push && git push --tags",
+    "publish": "vsce publish $VERSION -m 'chore: bump version to %s [skip ci]' && ovsx publish",
     "pretest": "npm run compile && npm run lint",
     "lint": "biome check --write src",
     "test": "node ./out/test/runTest.js"

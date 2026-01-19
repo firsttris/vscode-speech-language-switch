@@ -67,12 +67,17 @@ jobs:
       - name: Package Extension
         run: npm run package
           
-      - name: Publish to Marketplace and Create Release
+      - name: Publish to Marketplace
         run: npm run publish
         env:
           VERSION: ${{ inputs.version }}
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
           OVSX_PAT: ${{ secrets.OVSX_PAT }}
+      
+      - name: Push Version Commit and Tags
+        run: |
+          git push
+          git push --tags
       
       - name: Get New Version
         id: version
