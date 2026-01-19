@@ -58,7 +58,10 @@ jobs:
       - run: npm ci
       
       - name: Bump Version
-        run: npm version ${{ inputs.version }} -m "chore: bump version to %s"
+        id: bump
+        run: |
+          npm version ${{ inputs.version }} -m "chore: bump version to %s"
+          echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
         
       - name: Push Changes
         run: git push && git push --tags
@@ -74,7 +77,7 @@ jobs:
         with:
           files: '*.vsix'
           generate_release_notes: true
-          tag_name: v${{ steps.version.outputs.version }}
+          tag_name: v${{ steps.bump.outputs.version }}
           
       - name: Publish to Marketplace
         run: npm run publish
