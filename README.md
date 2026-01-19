@@ -39,9 +39,35 @@ A lightweight VS Code extension that provides quick access to switch the `access
 
 ## 🚀 Usage
 
+### Quick Pick Menu
+
 1. **Click** the globe icon (🌐) in the status bar (right side, positioned near the Copilot icon)
 2. **Select** your desired speech language from the quick pick menu
 3. **Done!** The setting updates automatically and the status bar reflects your choice
+
+### Keyboard Shortcuts
+
+You can configure custom keyboard shortcuts to switch between languages quickly. Open your `keybindings.json` file (File > Preferences > Keyboard Shortcuts > Open Keyboard Shortcuts JSON) and add entries like this:
+
+```json
+{
+  "key": "ctrl+alt+e",
+  "command": "speechLanguageSwitch.switchToLanguage",
+  "args": "en-US"
+},
+{
+  "key": "ctrl+alt+d",
+  "command": "speechLanguageSwitch.switchToLanguage",
+  "args": "de-DE"
+},
+{
+  "key": "ctrl+alt+f",
+  "command": "speechLanguageSwitch.switchToLanguage",
+  "args": "fr-FR"
+}
+```
+
+Replace the `key` value with your preferred keyboard shortcut and the `args` value with any supported language code from the list below.
 
 ## 🌍 Supported Languages
 

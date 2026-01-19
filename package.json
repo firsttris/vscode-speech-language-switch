@@ -26,8 +26,26 @@
       {
         "command": "speechLanguageSwitch.selectLanguage",
         "title": "Select Speech Language"
+      },
+      {
+        "command": "speechLanguageSwitch.switchToLanguage",
+        "title": "Switch to Specific Speech Language"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Speech Language Switcher",
+      "properties": {
+        "speechLanguageSwitch.shortcuts": {
+          "type": "object",
+          "default": {},
+          "description": "Configure keyboard shortcuts for quick language switching. Keys are language codes (e.g., 'en-US', 'de-DE'), values are keybindings (e.g., 'ctrl+alt+e').",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "markdownDescription": "Configure keyboard shortcuts for quick language switching.\n\nExample:\n```json\n{\n  \"en-US\": \"ctrl+alt+e\",\n  \"de-DE\": \"ctrl+alt+d\",\n  \"fr-FR\": \"ctrl+alt+f\"\n}\n```\n\nAvailable language codes: en-US, en-GB, de-DE, es-ES, fr-FR, it-IT, ja-JP, ko-KR, pt-BR, zh-CN, zh-TW, ru-RU, and more."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

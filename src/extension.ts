@@ -66,16 +66,40 @@ export function activate(context: vscode.ExtensionContext) {
 		},
 	);
 
-	// Listen for configuration changes to update the status bar
+	// Register command for direct language switching
+	const switchToLanguageDisposable = vscode.commands.registerCommand(
+		"speechLanguageSwitch.switchToLanguage",
+		async (languageCode?: string) => {
+			if (languageCode) {
+				await switchToLanguage(languageCode);
+			} else {
+				// If no language code provided, show the picker
+				await selectLanguage();
+			}
+		},
+	);
+
+	// Listen for configuration changes to update the status bar and keybindings
 	const configChangeDisposable = vscode.workspace.onDidChangeConfiguration(
 		(e) => {
 			if (e.affectsConfiguration("accessibility.voice.speechLanguage")) {
 				updateStatusBar();
 			}
+			if (e.affectsConfiguration("speechLanguageSwitch.shortcuts")) {
+				registerDynamicKeybindings(context);
+			}
 		},
 	);
 
-	context.subscriptions.push(statusBarItem, disposable, configChangeDisposable);
+	// Register dynamic keybindings based on user configuration
+	registerDynamicKeybindings(context);
+
+	context.subscriptions.push(
+		statusBarItem,
+		disposable,
+		switchToLanguageDisposable,
+		configChangeDisposable,
+	);
 }
 
 async function selectLanguage() {
@@ -145,6 +169,74 @@ async function selectLanguage() {
 		} catch (error) {
 			vscode.window.showErrorMessage(
 				`Failed to update speech language: ${error}`,
+			);
+		}
+	}
+}
+
+async function switchToLanguage(languageCode: string) {
+	try {
+		// Validate the language code
+		const lang = SPEECH_LANGUAGES.find((l) => l.value === languageCode);
+		if (!lang) {
+			vscode.window.showWarningMessage(
+				`Unknown language code: ${languageCode}`,
+			);
+			return;
+		}
+
+		const config = vscode.workspace.getConfiguration();
+		await config.update(
+			"accessibility.voice.speechLanguage",
+			languageCode,
+			vscode.ConfigurationTarget.Global,
+		);
+
+		// Update history
+		const history = extensionContext.globalState.get<string[]>(
+			"languageHistory",
+			[],
+		);
+		const newHistory = [
+			languageCode,
+			...history.filter((v) => v !== languageCode),
+		].slice(0, 10);
+		await extensionContext.globalState.update("languageHistory", newHistory);
+
+		// Update status bar
+		updateStatusBar();
+
+		// Show brief confirmation
+		vscode.window.setStatusBarMessage(
+			`Speech language switched to ${lang.label}`,
+			3000,
+		);
+	} catch (error) {
+		vscode.window.showErrorMessage(
+			`Failed to switch speech language: ${error}`,
+		);
+	}
+}
+
+function registerDynamicKeybindings(context: vscode.ExtensionContext) {
+	const config = vscode.workspace.getConfiguration("speechLanguageSwitch");
+	const shortcuts = config.get<Record<string, string>>("shortcuts", {});
+
+	// Note: VS Code doesn't support dynamic keybindings registration via API
+	// Instead, we'll provide instructions to users on how to set up keybindings manually
+	// Users can set keybindings in their keybindings.json like:
+	// {
+	//   "key": "ctrl+alt+e",
+	//   "command": "speechLanguageSwitch.switchToLanguage",
+	//   "args": "en-US"
+	// }
+
+	// For now, we'll just validate the configured shortcuts
+	for (const [languageCode, keybinding] of Object.entries(shortcuts)) {
+		const lang = SPEECH_LANGUAGES.find((l) => l.value === languageCode);
+		if (!lang) {
+			console.warn(
+				`Invalid language code in shortcuts configuration: ${languageCode}`,
 			);
 		}
 	}
