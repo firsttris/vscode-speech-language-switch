@@ -94,12 +94,6 @@ The extension supports a comprehensive range of speech languages:
 
 </details>
 
-## ⚙️ Requirements
-
-- **VS Code** 1.85.0 or higher
-
-No additional dependencies or configuration needed!
-
 ## 🤝 Contributing
 
 Want to contribute? We'd love your help!
@@ -130,7 +124,7 @@ Want to contribute? We'd love your help!
    ```bash
    npm run watch
    ```
-   
+
 ---
 
 
