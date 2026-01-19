@@ -57,30 +57,26 @@ jobs:
           
       - run: npm ci
       
-      - name: Bump Version
-        id: bump
-        run: |
-          npm version ${{ inputs.version }} -m "chore: bump version to %s"
-          echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
-        
-      - name: Push Changes
-        run: git push && git push --tags
-        
       - name: Build Extension
         run: npm run build
       
       - name: Package Extension
         run: npm run package
+          
+      - name: Publish to Marketplace and Create Release
+        run: npm run publish
+        env:
+          VERSION: ${{ inputs.version }}
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}
+      
+      - name: Get New Version
+        id: version
+        run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
         
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
           files: '*.vsix'
           generate_release_notes: true
-          tag_name: v${{ steps.bump.outputs.version }}
-          
-      - name: Publish to Marketplace
-        run: npm run publish
-        env:
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}
-          OVSX_PAT: ${{ secrets.OVSX_PAT }}
+          tag_name: v${{ steps.version.outputs.version }}
