@@ -6,6 +6,7 @@
   "icon": "earth.png",
   "publisher": "firsttris",
   "author": "Tristan Teufel",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/firsttris/vscode-speech-language-switch.git"
