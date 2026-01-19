@@ -25,6 +25,9 @@
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
+    "build": "npm run compile",
+    "package": "vsce package",
+    "publish": "vsce publish && ovsx publish",
     "pretest": "npm run compile && npm run lint",
     "lint": "biome check --write src",
     "test": "node ./out/test/runTest.js"
