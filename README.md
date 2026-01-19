@@ -130,20 +130,14 @@ Want to contribute? We'd love your help!
    ```bash
    npm run watch
    ```
-
-### 📝 Found a Bug or Have a Feature Request?
-
-- 🐛 [Report a Bug](https://github.com/yourusername/vscode-speech-language-switch/issues)
-- 💡 [Request a Feature](https://github.com/yourusername/vscode-speech-language-switch/issues)
-
+   
 ---
 
-## 📄 License
 
-MIT - see the [LICENSE](LICENSE) file for details
+<div align="center">
 
----
+**Made by the open source community**
 
-**Made with ❤️ for the VS Code community**
+⭐ Star us on [GitHub](https://github.com/firsttris/vscode-speech-language-switch) • 🐛 [Report a Bug](https://github.com/firsttris/vscode-speech-language-switch/issues) • 💡 [Request a Feature](https://github.com/firsttris/vscode-speech-language-switch/issues)
 
-⭐ Star us on [GitHub](https://github.com/yourusername/vscode-speech-language-switch) if you find this extension useful!
+</div>
