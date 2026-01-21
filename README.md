@@ -20,7 +20,7 @@
 
 A lightweight VS Code extension that provides quick access to switch the `accessibility.voice.speechLanguage` setting. Perfect for users who work in multiple languages or need to quickly adjust their speech accessibility settings.
 
-> ✨ **Why use this extension?** Instead of navigating through VS Code settings, simply click the status bar icon (located on the right side, near the Copilot icon) and select your language from the quick pick menu. It's that easy!
+> ✨ **Why use this extension?** If you're using Copilot with the VS Code Speech Plugin for multiple languages (e.g., German and English), the plugin's auto-detection often fails, requiring manual language switches. This extension provides a quick status bar icon to change speech languages effortlessly, instead of navigating through settings.
 
 ## ✨ Features
 
