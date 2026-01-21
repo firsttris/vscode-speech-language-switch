@@ -2,7 +2,7 @@
   "name": "vscode-speech-language-switch",
   "displayName": "Speech Language Switcher",
   "description": "Quickly switch the accessibility.voice.speechLanguage setting via a status bar icon",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "icon": "earth.png",
   "publisher": "firsttris",
   "author": "Tristan Teufel",
