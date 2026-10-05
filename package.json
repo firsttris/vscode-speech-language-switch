@@ -53,7 +53,10 @@
     "watch": "tsc -watch -p ./",
     "build": "npm run compile",
     "package": "vsce package",
-    "publish": "vsce publish $VERSION -m 'chore: bump version to %s [skip ci]' && ovsx publish",
+    "release:patch": "npm version patch",
+    "release:minor": "npm version minor",
+    "release:major": "npm version major",
+    "postversion": "git push --follow-tags",
     "pretest": "npm run compile && npm run lint",
     "lint": "biome check --write src",
     "test": "node ./out/test/runTest.js"
