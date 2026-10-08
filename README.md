@@ -148,11 +148,11 @@ Want to contribute? We'd love your help!
 
 ---
 
-
 <div align="center">
 
-**Made by the open source community**
+⭐ Like Speech Language Switcher? A [star on GitHub](https://github.com/firsttris/vscode-speech-language-switch) helps others find it.<br>
+🐛 [Report a bug](https://github.com/firsttris/vscode-speech-language-switch/issues/new?template=bug_report.md) · 💡 [Request a feature](https://github.com/firsttris/vscode-speech-language-switch/issues/new?template=feature_request.md)
 
-⭐ Star us on [GitHub](https://github.com/firsttris/vscode-speech-language-switch) • 🐛 [Report a Bug](https://github.com/firsttris/vscode-speech-language-switch/issues) • 💡 [Request a Feature](https://github.com/firsttris/vscode-speech-language-switch/issues)
+<sub>License: <a href="LICENSE">MIT</a> · © Tristan Teufel and contributors</sub>
 
 </div>
