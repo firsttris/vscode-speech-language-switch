@@ -1,0 +1,70 @@
+// Renovate (GitHub App, https://github.com/apps/renovate): a pull request for each new release of
+// what Speech Language Switcher builds on, plus the "Dependency Dashboard" issue listing what is open.
+// Only those: the VS Code API (engines.vscode, @types/vscode and the README badge, opened only
+// when ticked in the dashboard) and the Node of CI. The other packages and the actions are not
+// tracked here. Check with `npx --package renovate renovate-config-validator .github/renovate.json5`.
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  extends: ["config:recommended"],
+  enabledManagers: ["npm", "custom.regex"],
+  timezone: "Europe/Berlin",
+  labels: ["dependencies"],
+  automerge: false,
+  customManagers: [
+    {
+      // engines.vscode, from the same releases as @types/vscode: vsce refuses a package whose
+      // @types/vscode is newer than engines.vscode, so both take the same version
+      customType: "regex",
+      managerFilePatterns: ["/^package\\.json$/"],
+      matchStrings: ['"engines": \\{\\s*"vscode": "\\^(?<currentValue>\\d+\\.\\d+\\.\\d+)"'],
+      depNameTemplate: "vscode-engine",
+      packageNameTemplate: "@types/vscode",
+      datasourceTemplate: "npm",
+    },
+    {
+      // The "VS Code x.y.z+" badge of the README
+      customType: "regex",
+      managerFilePatterns: ["/^README\\.md$/"],
+      matchStrings: ["badge/VS%20Code-(?<currentValue>\\d+\\.\\d+\\.\\d+)\\+-blue"],
+      depNameTemplate: "vscode-badge",
+      packageNameTemplate: "@types/vscode",
+      datasourceTemplate: "npm",
+    },
+    {
+      // The Node of CI
+      customType: "regex",
+      managerFilePatterns: ["/^\\.github/workflows/ci\\.yml$/"],
+      matchStrings: ["node-version: (?<currentValue>\\d+)\\.x", "Use Node\\.js (?<currentValue>\\d+)\\.x"],
+      depNameTemplate: "node",
+      datasourceTemplate: "node-version",
+      versioningTemplate: "node",
+    },
+  ],
+  packageRules: [
+    {
+      // From npm only @types/vscode; engines.vscode comes through the regex above
+      matchManagers: ["npm"],
+      enabled: false,
+    },
+    {
+      // The lowest VS Code the extension runs on. Raising it shuts out every editor still on an
+      // older one (VSCodium, Cursor, Windsurf lag behind VS Code), so the PR is only opened when
+      // ticked in the Dependency Dashboard, i.e. when a newer API is needed.
+      matchManagers: ["npm", "custom.regex"],
+      matchPackageNames: ["@types/vscode"],
+      enabled: true,
+      rangeStrategy: "bump",
+      groupName: "VS Code engine",
+      commitMessageTopic: "VS Code engine",
+      dependencyDashboardApproval: true,
+      prBodyNotes: [
+        "`engines.vscode`, `@types/vscode` and the README badge move together (`vsce package` fails when `@types/vscode` is newer than `engines.vscode`). Before merging: is this API really needed? Check which VS Code version the forks on Open VSX are based on (VSCodium, Cursor, Windsurf); users on an older one get no more updates. Then `npm run compile` and `npm run package`, and try the .vsix of this PR's CI.",
+      ],
+    },
+    {
+      matchPackageNames: ["node"],
+      groupName: "Node",
+      sourceUrl: "https://github.com/nodejs/node",
+    },
+  ],
+}
