@@ -30,10 +30,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Use Node.js 26.x
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 26.x
 
@@ -42,7 +42,7 @@ jobs:
       - run: npm run build
       - run: npm run package
       # Installable from a pull request; the release attaches it and publishes it
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: vsix
           path: '*.vsix'
