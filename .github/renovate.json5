@@ -1,15 +1,14 @@
 // Renovate (GitHub App, https://github.com/apps/renovate): a pull request for each new release of
-// what Speech Language Switcher builds on, plus the "Dependency Dashboard" issue listing what is open.
-// Only those: the VS Code API (engines.vscode, @types/vscode and the README badge, opened only
-// when ticked in the dashboard) and the Node of CI. The other packages and the actions are not
-// tracked here. Check with `npx --package renovate renovate-config-validator .github/renovate.json5`.
+// what Speech Language Switcher builds on, plus the "Dependency Dashboard" issue listing what is
+// open. Their own pull requests: the VS Code API (engines.vscode, @types/vscode and the README
+// badge, opened only when ticked in the dashboard) and the Node of CI.
+// Everything else (the other packages, the actions, the images) comes with the shared settings of
+// firsttris/workflows (renovate/default.json5): minor and patch updates once a month in one pull
+// request that merges itself when CI is green, majors on request in the dashboard.
+// Check with `npx --package renovate renovate-config-validator .github/renovate.json5`.
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
-  extends: ["config:recommended"],
-  enabledManagers: ["npm", "custom.regex"],
-  timezone: "Europe/Berlin",
-  labels: ["dependencies"],
-  automerge: false,
+  extends: ["github>firsttris/workflows//renovate/default.json5"],
   customManagers: [
     {
       // engines.vscode, from the same releases as @types/vscode: vsce refuses a package whose
@@ -42,11 +41,6 @@
   ],
   packageRules: [
     {
-      // From npm only @types/vscode; engines.vscode comes through the regex above
-      matchManagers: ["npm"],
-      enabled: false,
-    },
-    {
       // The lowest VS Code the extension runs on. Raising it shuts out every editor still on an
       // older one (VSCodium, Cursor, Windsurf lag behind VS Code), so the PR is only opened when
       // ticked in the Dependency Dashboard, i.e. when a newer API is needed.
@@ -60,11 +54,16 @@
       prBodyNotes: [
         "`engines.vscode`, `@types/vscode` and the README badge move together (`vsce package` fails when `@types/vscode` is newer than `engines.vscode`). Before merging: is this API really needed? Check which VS Code version the forks on Open VSX are based on (VSCodium, Cursor, Windsurf); users on an older one get no more updates. Then `npm run compile` and `npm run package`, and try the .vsix of this PR's CI.",
       ],
+      schedule: ["at any time"],
+      automerge: false,
     },
     {
       matchPackageNames: ["node"],
       groupName: "Node",
       sourceUrl: "https://github.com/nodejs/node",
+      schedule: ["at any time"],
+      automerge: false,
+      dependencyDashboardApproval: false,
     },
   ],
 }
