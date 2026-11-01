@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "@types/vscode": "^1.140.0",
-    "@types/node": "26.6.5",
+    "@types/node": "26.6.6",
     "@biomejs/biome": "^2.3.11",
     "typescript": "^7.0.0",
     "ovsx": "^1.0.0",
