@@ -10,7 +10,7 @@
 <a href="https://github.com/firsttris/vscode-speech-language-switch/actions/workflows/ci.yml"><img src="https://github.com/firsttris/vscode-speech-language-switch/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
 <a href="https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-speech-language-switch"><img src="https://vsmarketplacebadges.dev/version-short/firsttris.vscode-speech-language-switch.svg" alt="VS Marketplace Version"></a>
 <a href="https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-speech-language-switch"><img src="https://vsmarketplacebadges.dev/installs-short/firsttris.vscode-speech-language-switch.svg" alt="Installs"></a>
-<a href="https://code.visualstudio.com/"><img src="https://img.shields.io/badge/VS%20Code-1.140.0+-blue.svg" alt="VS Code"></a>
+<a href="https://code.visualstudio.com/"><img src="https://img.shields.io/badge/VS%20Code-1.144.0+-blue.svg" alt="VS Code"></a>
 
 ---
 
