@@ -135,9 +135,9 @@ Want to contribute? We'd love your help!
    cd vscode-speech-language-switch
    ```
 
-2. **Install dependencies**
+2. **Install dependencies** with [Bun](https://bun.sh) (the version in `packageManager` in `package.json`)
    ```bash
-   npm install
+   bun install
    ```
 
 3. **Start development**
@@ -146,7 +146,7 @@ Want to contribute? We'd love your help!
 
 4. **Build the extension**
    ```bash
-   npm run compile
+   bun run package   # out/ and the .vsix
    ```
 
 ---

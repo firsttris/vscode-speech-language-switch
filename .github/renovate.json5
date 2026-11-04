@@ -1,11 +1,12 @@
 // Renovate (GitHub App, https://github.com/apps/renovate): a pull request for each new release of
 // what Speech Language Switcher builds on, plus the "Dependency Dashboard" issue listing what is
 // open. Their own pull requests: the VS Code API (engines.vscode, @types/vscode and the README
-// badge, opened only when ticked in the dashboard) and the Node of CI.
+// badge, opened only when ticked in the dashboard) and Bun (packageManager in package.json, read by
+// Renovate's npm manager, the Bun of CI).
 // Everything else (the other packages, the actions, the images) comes with the shared settings of
 // firsttris/workflows (renovate/default.json5): minor and patch updates once a month in one pull
 // request that merges itself when CI is green, majors on request in the dashboard.
-// Check with `npx --package renovate renovate-config-validator .github/renovate.json5`.
+// Check with `bunx --package renovate renovate-config-validator .github/renovate.json5`.
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: ["github>firsttris/workflows//renovate/default.json5"],
@@ -29,15 +30,6 @@
       packageNameTemplate: "@types/vscode",
       datasourceTemplate: "npm",
     },
-    {
-      // The Node of CI
-      customType: "regex",
-      managerFilePatterns: ["/^\\.github/workflows/ci\\.yml$/"],
-      matchStrings: ["node-version: (?<currentValue>\\d+)\\.x", "Use Node\\.js (?<currentValue>\\d+)\\.x"],
-      depNameTemplate: "node",
-      datasourceTemplate: "node-version",
-      versioningTemplate: "node",
-    },
   ],
   packageRules: [
     {
@@ -52,15 +44,19 @@
       commitMessageTopic: "VS Code engine",
       dependencyDashboardApproval: true,
       prBodyNotes: [
-        "`engines.vscode`, `@types/vscode` and the README badge move together (`vsce package` fails when `@types/vscode` is newer than `engines.vscode`). Before merging: is this API really needed? Check which VS Code version the forks on Open VSX are based on (VSCodium, Cursor, Windsurf); users on an older one get no more updates. Then `npm run compile` and `npm run package`, and try the .vsix of this PR's CI.",
+        "`engines.vscode`, `@types/vscode` and the README badge move together (`vsce package` fails when `@types/vscode` is newer than `engines.vscode`). Before merging: is this API really needed? Check which VS Code version the forks on Open VSX are based on (VSCodium, Cursor, Windsurf); users on an older one get no more updates. Then `bun run package`, and try the .vsix of this PR's CI.",
       ],
       schedule: ["at any time"],
       automerge: false,
     },
     {
-      matchPackageNames: ["node"],
-      groupName: "Node",
-      sourceUrl: "https://github.com/nodejs/node",
+      // packageManager in package.json: setup-bun's bun-version-file in ci.yml
+      matchPackageNames: ["bun"],
+      groupName: "Bun",
+      sourceUrl: "https://github.com/oven-sh/bun",
+      prBodyNotes: [
+        "`packageManager` in package.json is the Bun of CI: it installs the packages (`bun.lock`), runs Biome and `tsc` and packages the `.vsix` (`vsce package --no-dependencies`). Check that `ci.yml` stays green, compare `unzip -l` of the `.vsix` artifact with the last release, and run `bun install` locally if `bun.lock` changes.",
+      ],
       schedule: ["at any time"],
       automerge: false,
       dependencyDashboardApproval: false,
