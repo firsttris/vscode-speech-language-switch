@@ -1,8 +1,8 @@
 // Renovate (GitHub App, https://github.com/apps/renovate): a pull request for each new release of
 // what Speech Language Switcher builds on, plus the "Dependency Dashboard" issue listing what is
-// open. Their own pull requests: the VS Code API (engines.vscode, @types/vscode and the README
-// badge, opened only when ticked in the dashboard) and Bun (packageManager in package.json, read by
-// Renovate's npm manager, the Bun of CI).
+// open. Its own pull request: Bun (packageManager in package.json, read by Renovate's npm manager,
+// the Bun of CI). The VS Code API (engines.vscode, @types/vscode and the README badge) is never
+// updated by Renovate, the same as in firsttris/vscode-jest-runner.
 // Everything else (the other packages, the actions, the images) comes with the shared settings of
 // firsttris/workflows (renovate/default.json5): minor and patch updates once a month in one pull
 // request that merges itself when CI is green, majors on request in the dashboard.
@@ -33,12 +33,16 @@
   ],
   packageRules: [
     {
-      // The lowest VS Code the extension runs on. Raising it shuts out every editor still on an
-      // older one (VSCodium, Cursor, Windsurf lag behind VS Code), so the PR is only opened when
-      // ticked in the Dependency Dashboard, i.e. when a newer API is needed.
+      // The lowest VS Code the extension runs on, ^1.100.0 like Jest Runner. Raising it shuts out
+      // every editor still on an older one (VSCodium, Cursor, Windsurf lag behind VS Code): Jest
+      // Runner no longer showed up in Cursor's extension search with a newer engine. So Renovate
+      // never proposes it, not even in the Dependency Dashboard (#17 raised it to ^1.144.0 and was
+      // closed). Only when a newer API is really needed: set `enabled: true` here, or raise
+      // engines.vscode, @types/vscode and the README badge by hand, after checking the forks'
+      // VS Code version.
       matchManagers: ["npm", "custom.regex"],
       matchPackageNames: ["@types/vscode"],
-      enabled: true,
+      enabled: false,
       rangeStrategy: "bump",
       groupName: "VS Code engine",
       commitMessageTopic: "VS Code engine",
