@@ -1,0 +1,4 @@
+{
+  // The npm tasks of tasks.json (watch, the build task of F5) run with Bun
+  "npm.packageManager": "bun"
+}
